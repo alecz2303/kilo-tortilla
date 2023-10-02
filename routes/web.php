@@ -1,5 +1,9 @@
 <?php
 
+if (App::environment('production', 'staging')) {
+URL::forceScheme('https');
+}
+
 use TCG\Voyager\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QrController;
@@ -16,21 +20,9 @@ use App\Http\Controllers\QrController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-    $posts = Post::all();
-    return view('home', compact('posts'));
+    return view('welcome');
 });
-
-Route::get('post/{slug}', function($slug){
-    $post = Post::where('slug', '=', $slug)->firstOrFail();
-	return view('post', compact('post'));
-});
-
-Route::get('/qrcode', [App\Http\Controllers\QrController::class, 'index'])->name('home.index');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
