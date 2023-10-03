@@ -94,6 +94,8 @@
     	{
     		scannedTextMemo.value = scannedText;
     	}
+    	alert (scannedText);
+    	window.location.href = scannedText;
     	var scannedTextMemoHist = document.getElementById("scannedTextMemoHist");
     	if(scannedTextMemoHist)
     	{
