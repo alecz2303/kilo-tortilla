@@ -1,12 +1,10 @@
 <?php
 
-if (App::environment('production', 'staging')) {
-URL::forceScheme('https');
-}
 
 use TCG\Voyager\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QrController;
+use App\Http\Controllers\AsignacionesController;
 
 
 /*
@@ -20,11 +18,27 @@ use App\Http\Controllers\QrController;
 |
 */
 
+Route::get('r', function()
+{
+    header('Content-Type: application/excel');
+    header('Content-Disposition: attachment; filename="routes.csv"');
+
+    $routes = Route::getRoutes();
+    $fp = fopen('php://output', 'w');
+    fputcsv($fp, ['METHOD', 'URI', 'NAME', 'ACTION']);
+    foreach ($routes as $route) {
+        fputcsv($fp, [head($route->methods()) , $route->uri(), $route->getName(), $route->getActionName()]);
+    }
+    fclose($fp);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::get('asignar/{id}', 'App\Http\Controllers\AsignacionesController@asignar')->name('asignar');
 });
 

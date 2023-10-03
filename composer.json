@@ -22,11 +22,11 @@
         "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "kitloong/laravel-migrations-generator": "^6.10",
         "laravel/sail": "^1.24",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10",
-        "ryoluo/sail-ssl": "^1.2"
+        "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {
         "psr-4": {
