@@ -39,7 +39,7 @@ return [
 
         'main' => [
             'salt' => 'chapo',
-            'length' => '8',
+            'length' => '32',
             // 'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         ],
 
