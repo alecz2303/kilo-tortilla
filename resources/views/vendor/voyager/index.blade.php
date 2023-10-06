@@ -21,12 +21,12 @@
     <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
     <noscript>
       <div class="row-element-set error_message">
-        Your web browser must have JavaScript enabled
-        in order for this application to display correctly.
+        Su navegador web debe tener JavaScript habilitado
+        para que esta aplicación se muestre correctamente.
       </div>
     </noscript>
     <div class="row-element-set error_message" id="secure-connection-message" style="display: none;" hidden >
-      You may need to serve this page over a secure connection (https) to run JsQRScanner correctly.
+      Es posible que deba publicar esta página a través de una conexión segura (https) para ejecutar JsQRScanner correctamente.
     </div>
     <script> 
     if (location.protocol != 'https:') { 
@@ -34,12 +34,12 @@
       }
       </script>  
 
-      <h1>JsQRScanner example</h1>
+      <h1>Kilo de Tortilla Gratis</h1>
       <div class="row-element">
         <div class="FlexPanel detailsPanel QRScannerShort">
           <div class="FlexPanel shortInfoPanel">
             <div class="gwt-HTML">
-              Point the webcam to a QR code.
+              Apunte la cámara web a un código QR.
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="qrscanner" id="scanner">
         </div>
       </div>
-      <div class="row-element">
+      <div class="row-element hidden">
         <div class="form-field form-field-memo">
           <div class="form-field-caption-panel">
             <div class="gwt-Label form-field-caption">
@@ -74,7 +74,6 @@
         </div>
       </div>
       <br>
-      <a style="font-weight: bold;" href="https://github.com/jbialobr/JsQRScanner">The source code is hosted on GitHub</a>
     </div>
                     </div>
                 </div>
@@ -95,7 +94,8 @@
     		scannedTextMemo.value = scannedText;
     	}
     	alert (scannedText);
-    	window.location.href = scannedText;
+      var url = "{{ setting('admin.urlredirect') }}";
+    	window.location.href = url + scannedText;
     	var scannedTextMemoHist = document.getElementById("scannedTextMemoHist");
     	if(scannedTextMemoHist)
     	{
@@ -165,6 +165,32 @@
     	}        
     }
   </script>    
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    @if (Session::has('message'))
+    <?php Debugbar::info(Session::get('message')); ?>
+      swal({
+        title: "{!! Session::get('message') !!}",
+        icon: "{!! Session::get('alert-type') !!}",
+        button: {
+          cancel: {
+            text: "Cancel",
+            value: null,
+            visible: false,
+            className: "",
+            closeModal: true,
+          }
+        },
+        @if (Session::get("alert-type") == "error")
+          dangerMode: true
+        @endif
+      });
+    @endif
+  </script>
 
 @stop
 

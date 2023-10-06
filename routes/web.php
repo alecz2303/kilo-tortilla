@@ -7,6 +7,7 @@ use App\Http\Controllers\QrController;
 use App\Http\Controllers\AsignacionesController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
