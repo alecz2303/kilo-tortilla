@@ -94,6 +94,7 @@
     		scannedTextMemo.value = scannedText;
     	}
       var url = "{{ setting('admin.urlredirect') }}";
+        alert ("Se ha detectado código QR");
     	window.location.href = url + scannedText;
     	var scannedTextMemoHist = document.getElementById("scannedTextMemoHist");
     	if(scannedTextMemoHist)
