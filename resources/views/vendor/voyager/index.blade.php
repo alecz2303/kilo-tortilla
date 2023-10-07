@@ -93,7 +93,6 @@
     	{
     		scannedTextMemo.value = scannedText;
     	}
-    	alert (scannedText);
       var url = "{{ setting('admin.urlredirect') }}";
     	window.location.href = url + scannedText;
     	var scannedTextMemoHist = document.getElementById("scannedTextMemoHist");
