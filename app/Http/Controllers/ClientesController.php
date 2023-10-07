@@ -30,7 +30,7 @@ class ClientesController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContro
             $data = $response->json(); // Parse the JSON response
             $msg = "El cliente ha sido dado de alta";
             $type = "success";
-            return redirect()->route('voyager.dashboard')->with([
+            return redirect()->route('voyager.clientes.index')->with([
                 'message'    => $msg,
                 'alert-type' => $type,
             ]);
