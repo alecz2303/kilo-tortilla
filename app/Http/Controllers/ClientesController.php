@@ -20,9 +20,11 @@ class ClientesController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContro
         $cliente->idmex = $request->input('idmex');
         $cliente->save();
 
+        $token = setting('admin.token_acceso');
+
         $id = $cliente->id;
         $idEncode = Hashids::encode($id);
-        $url = 'http://kilo-tortilla-api.djira.xyz/api/items/'.$id.'/'.$idEncode;
+        $url = 'http://kilo-tortilla-api.djira.xyz/api/items/'.$id.'/'.$idEncode.'/'.$token;
         $response = Http::post($url);
 
         // Check if the request was successful (status code 200)
