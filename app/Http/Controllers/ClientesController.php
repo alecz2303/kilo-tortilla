@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Vinkla\Hashids\Facades\Hashids;
 use App\Models\Cliente;
+use Barryvdh\Debugbar\Facades\Debugbar;
 
 class ClientesController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
 {
