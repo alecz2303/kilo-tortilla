@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Vinkla\Hashids\Facades\Hashids;
 use App\Models\Cliente;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use Illuminate\Support\Facades\Log;
 
 class ClientesController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
 {
@@ -28,7 +29,6 @@ class ClientesController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContro
         $url = 'http://kilo-tortilla-api.djira.xyz/api/items/'.$id.'/'.$idEncode.'/'.$token;
         $response = Http::post($url);
 
-        Debugbar::info($idEncode);
 
         // Check if the request was successful (status code 200)
         if ($response->successful()) {
